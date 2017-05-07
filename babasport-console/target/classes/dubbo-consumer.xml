@@ -1,0 +1,24 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://code.alibabatech.com/schema/dubbo
+		http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+  <!-- 配置服务消费方 -->
+
+  <!-- 配置服务名称 -->
+  <dubbo:application name="console"/>
+
+  <!-- 配置注册中心 -->
+  <!--<dubbo:registry protocol="zookeeper" address="192.168.163.128:2181"/>-->
+  <dubbo:registry address="N/A" />
+
+  <!-- 引用对外暴露的服务接口 -->
+  <dubbo:reference id="brandService" interface="com.phoenix.babasport.service.BrandService"
+                   url="dubbo://127.0.0.1:20880" timeout="6000000"/>
+  <dubbo:reference id="uploadService" interface="com.phoenix.babasport.service.UploadService"
+                   url="dubbo://127.0.0.1:20880" timeout="6000000"/>
+  <dubbo:reference id="productService" interface="com.phoenix.babasport.service.ProductService"
+                   url="dubbo://127.0.0.1:20880" timeout="6000000"/>
+</beans>
